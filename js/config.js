@@ -3,7 +3,7 @@
 // quotes (see SETUP.md, Step 1). Until it's set, the RSVP form shows a
 // "coming soon" note instead of submitting.
 window.YAHYA_CONFIG = {
-  RSVP_ENDPOINT: "",
+  RSVP_ENDPOINT: "https://script.google.com/macros/s/AKfycbyIi7YqeAuKYy0i5nAkUJYjlfm1GPPSPdmJDF5xupv0YERIDBD37IbWhcW6h6GROY9j6Q/exec",
 
   // Event details used for the Add to Calendar button.
   EVENT: {
