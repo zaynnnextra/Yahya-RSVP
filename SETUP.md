@@ -45,11 +45,14 @@ RSVP on the website; it should appear in the sheet and in your inbox within seco
 
 ## Step 2 — Publish the website (GitHub Pages)
 
-1. Merge this branch into `main` (or use it directly).
-2. On GitHub, open the repo → **Settings → Pages**.
-3. Under **Build and deployment / Source**, choose **Deploy from a branch**,
-   pick `main` (folder: `/ (root)`), and **Save**.
-4. After a minute the site is live at:
+Everything is already on `main` with a deploy workflow — only one switch needs
+flipping (GitHub requires the repo owner to do this, it can't be automated):
+
+1. On GitHub, open the repo → **Settings → Pages**.
+2. Under **Build and deployment / Source**, choose **GitHub Actions**.
+3. That's it — the "Deploy invitation site to GitHub Pages" workflow publishes
+   the site (re-run it from the Actions tab if it doesn't start on its own).
+   After a minute the site is live at:
 
    **https://zaynnnextra.github.io/Yahya-RSVP/**
 
