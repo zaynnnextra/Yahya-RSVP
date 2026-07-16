@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>You're Invited — Yahya's 1st Birthday 👑</title>
+
+  <!-- Link previews (WhatsApp / iMessage / etc.) -->
+  <meta property="og:title" content="You're Invited — Yahya's 1st Birthday 👑">
+  <meta property="og:description" content="A Royal Celebration Awaits · Saturday, August 29 · 7–10 PM · Tempura Grill, Houston. Tap to open your royal invitation & RSVP!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zaynnnextra.github.io/Yahya-RSVP/">
+  <meta property="og:image" content="https://zaynnnextra.github.io/Yahya-RSVP/assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="description" content="The Royals are gathering to celebrate Yahya's 1st Birthday! Saturday, August 29, 7–10 PM at Tempura Grill, Houston. RSVP by August 1st.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════ ENVELOPE INTRO ═══════════════ -->
+  <div id="envelope-overlay" aria-label="Invitation envelope. Tap the seal to open.">
+    <div class="envelope-scene">
+      <div class="envelope" id="envelope">
+        <div class="env-card">
+          <span class="env-card-crown">👑</span>
+          <span class="env-card-script">Yahya's</span>
+          <span class="env-card-caps">First Birthday</span>
+        </div>
+        <div class="env-back"></div>
+        <div class="env-pocket"></div>
+        <div class="env-flap"></div>
+        <button class="seal" id="seal" aria-label="Open the invitation">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <defs>
+              <path id="seal-arc-top" d="M 22 66 A 40 40 0 0 1 98 66" fill="none"/>
+              <path id="seal-arc-bottom" d="M 26 68 A 36 36 0 0 0 94 68" fill="none"/>
+            </defs>
+            <circle cx="60" cy="60" r="56" class="seal-wax-outer"/>
+            <circle cx="60" cy="60" r="46" class="seal-wax-inner"/>
+            <text class="seal-text"><textPath href="#seal-arc-top" startOffset="50%" text-anchor="middle">You are</textPath></text>
+            <text class="seal-text seal-text-lower"><textPath href="#seal-arc-bottom" startOffset="50%" text-anchor="middle">invited</textPath></text>
+            <text x="60" y="64" text-anchor="middle" class="seal-star">✦</text>
+          </svg>
+        </button>
+      </div>
+      <p class="tap-hint">Tap the seal to open</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════ INVITATION ═══════════════ -->
+  <main id="invitation" hidden>
+
+    <!-- Hero -->
+    <section class="hero reveal">
+      <div class="sparkle-field" data-sparkles="18"></div>
+      <div class="crown-main floaty" aria-hidden="true">
+        <svg viewBox="0 0 200 130">
+          <path class="crown-gold" d="M18 108 L10 48 Q34 66 48 52 Q40 32 52 24 Q66 20 70 36 Q76 54 100 30 Q124 54 130 36 Q134 20 148 24 Q160 32 152 52 Q166 66 190 48 L182 108 Z"/>
+          <rect class="crown-band" x="14" y="104" width="172" height="16" rx="7"/>
+          <circle class="crown-pearl" cx="34" cy="112" r="3.4"/><circle class="crown-pearl" cx="56" cy="112" r="3.4"/><circle class="crown-pearl" cx="78" cy="112" r="3.4"/><circle class="crown-pearl" cx="100" cy="112" r="3.4"/><circle class="crown-pearl" cx="122" cy="112" r="3.4"/><circle class="crown-pearl" cx="144" cy="112" r="3.4"/><circle class="crown-pearl" cx="166" cy="112" r="3.4"/>
+          <path class="crown-jewel" d="M100 58 L112 76 L100 94 L88 76 Z"/>
+          <circle class="crown-jewel-side" cx="52" cy="78" r="7"/>
+          <circle class="crown-jewel-side" cx="148" cy="78" r="7"/>
+          <circle class="crown-gold" cx="100" cy="22" r="6"/>
+        </svg>
+      </div>
+      <h1 class="script-heading">
+        <span class="line-blue">A</span>
+        <span class="line-blue big">Royal</span>
+        <span class="line-gold big">Celebration</span>
+        <span class="line-blue big">Awaits</span>
+      </h1>
+      <p class="countdown" id="countdown" aria-live="polite"></p>
+      <div class="scroll-cue" aria-hidden="true">▾</div>
+    </section>
+
+    <!-- Details -->
+    <section class="details reveal">
+      <div class="balloons balloons-left" aria-hidden="true">
+        <svg viewBox="0 0 100 190">
+          <path class="string" d="M38 76 Q30 110 44 140 Q52 162 40 186" />
+          <path class="string" d="M66 66 Q76 100 62 132" />
+          <ellipse class="b-navy"  cx="36" cy="48" rx="26" ry="31"/>
+          <ellipse class="b-gold"  cx="72" cy="36" rx="21" ry="26"/>
+          <ellipse class="b-sky"   cx="58" cy="86" rx="17" ry="21"/>
+          <text x="28" y="54" class="balloon-crown">👑</text>
+        </svg>
+      </div>
+      <div class="balloons balloons-right" aria-hidden="true">
+        <svg viewBox="0 0 100 190">
+          <path class="string" d="M62 76 Q70 110 56 140 Q48 162 60 186" />
+          <path class="string" d="M34 66 Q24 100 38 132" />
+          <ellipse class="b-gold"  cx="64" cy="48" rx="26" ry="31"/>
+          <ellipse class="b-sky"   cx="28" cy="36" rx="21" ry="26"/>
+          <ellipse class="b-navy"  cx="42" cy="86" rx="17" ry="21"/>
+          <text x="56" y="54" class="balloon-crown">👑</text>
+        </svg>
+      </div>
+
+      <p class="eyebrow">The Royals are gathering<br>to celebrate</p>
+      <h2 class="name-script">Yahya's</h2>
+      <p class="first-birthday">1st Birthday!</p>
+
+      <div class="date-row" aria-label="Saturday, August 29">
+        <span class="date-side">Sat</span>
+        <span class="date-num">29</span>
+        <span class="date-side">Aug</span>
+      </div>
+      <p class="detail-line time-line">7 PM – 10 PM</p>
+      <p class="detail-line venue-name">Tempura Grill</p>
+      <p class="detail-line">25901 Hillcroft St B6</p>
+      <p class="detail-line">Houston</p>
+
+      <div class="btn-row">
+        <button class="royal-btn" id="calendar-btn">📅 Add to Calendar</button>
+        <a class="royal-btn" id="maps-btn" href="https://maps.google.com/?q=Tempura+Grill,+25901+Hillcroft+St+B6,+Houston,+TX" target="_blank" rel="noopener">📍 Open in Maps</a>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="video-section reveal" id="video-section">
+      <h2 class="section-title script-gold">The Royal Invitation</h2>
+      <div class="video-frame">
+        <video id="invite-video" controls playsinline preload="metadata">
+          <source src="assets/yahya-invite.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Dress code -->
+    <section class="card-section reveal">
+      <div class="royal-card">
+        <div class="sparkle-field" data-sparkles="8"></div>
+        <h2 class="card-title">Royal Elegance</h2>
+        <p class="card-body">We invite you to dress in your finest formal attire for our royal celebration.</p>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="card-section reveal" id="rsvp">
+      <div class="royal-card">
+        <h2 class="card-title">RSVP</h2>
+        <p class="card-body">Please let us know if you can join the royal fun<br><strong>RSVP by August 1st</strong></p>
+
+        <form id="rsvp-form" novalidate>
+          <label class="field">
+            <span class="field-label">Family / Guest Name</span>
+            <input type="text" name="name" id="rsvp-name" placeholder="The Smith Family" autocomplete="name" required>
+          </label>
+
+          <div class="field">
+            <span class="field-label">Will you attend?</span>
+            <div class="attend-toggle" role="radiogroup" aria-label="Will you attend?">
+              <input type="radio" name="attending" id="attend-yes" value="Joyfully Accepts">
+              <label for="attend-yes">👑 Joyfully Accept</label>
+              <input type="radio" name="attending" id="attend-no" value="Regretfully Declines">
+              <label for="attend-no">Regretfully Decline</label>
+            </div>
+          </div>
+
+          <div class="counts-row" id="counts-row">
+            <div class="field count-field">
+              <span class="field-label">Adults</span>
+              <div class="stepper">
+                <button type="button" class="step-btn" data-step="-1" data-target="adults" aria-label="Fewer adults">−</button>
+                <input type="number" name="adults" id="rsvp-adults" value="1" min="0" max="20" inputmode="numeric" readonly>
+                <button type="button" class="step-btn" data-step="1" data-target="adults" aria-label="More adults">+</button>
+              </div>
+            </div>
+            <div class="field count-field">
+              <span class="field-label">Kids</span>
+              <div class="stepper">
+                <button type="button" class="step-btn" data-step="-1" data-target="kids" aria-label="Fewer kids">−</button>
+                <input type="number" name="kids" id="rsvp-kids" value="0" min="0" max="20" inputmode="numeric" readonly>
+                <button type="button" class="step-btn" data-step="1" data-target="kids" aria-label="More kids">+</button>
+              </div>
+            </div>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Message for the birthday prince <small>(optional)</small></span>
+            <textarea name="message" id="rsvp-message" rows="3" placeholder="Happy 1st birthday, Yahya!"></textarea>
+          </label>
+
+          <button type="submit" class="royal-btn submit-btn" id="rsvp-submit">Send RSVP ✦</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+
+        <div class="rsvp-done" id="rsvp-done" hidden>
+          <span class="done-crown">👑</span>
+          <p class="done-title">Received, by royal decree!</p>
+          <p class="done-body" id="done-body"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer reveal">
+      <div class="sparkle-field" data-sparkles="12"></div>
+      <div class="wood-sign">
+        <span class="chain chain-left" aria-hidden="true"></span>
+        <span class="chain chain-right" aria-hidden="true"></span>
+        <p class="sign-text">Hope to see<br>you there</p>
+      </div>
+      <div class="castle" aria-hidden="true">
+        <svg viewBox="0 0 360 140" preserveAspectRatio="xMidYMax meet">
+          <g class="castle-fill">
+            <rect x="30"  y="60" width="26" height="80"/>
+            <rect x="130" y="44" width="30" height="96"/>
+            <rect x="200" y="44" width="30" height="96"/>
+            <rect x="304" y="60" width="26" height="80"/>
+            <rect x="86"  y="76" width="188" height="64"/>
+            <rect x="52"  y="104" width="38" height="36"/>
+            <rect x="270" y="104" width="38" height="36"/>
+            <rect x="166" y="84" width="28" height="56" rx="14" class="castle-door"/>
+          </g>
+          <g class="castle-roof">
+            <path d="M28 62 L43 26 L58 62 Z"/>
+            <path d="M128 46 L145 8 L162 46 Z"/>
+            <path d="M198 46 L215 8 L232 46 Z"/>
+            <path d="M302 62 L317 26 L332 62 Z"/>
+          </g>
+          <g class="castle-flag">
+            <path d="M43 26 L43 12 L58 16 L43 20 Z"/>
+            <path d="M145 8 L145 -6 L160 -2 L145 2 Z"/>
+            <path d="M215 8 L215 -6 L230 -2 L215 2 Z"/>
+            <path d="M317 26 L317 12 L332 16 L317 20 Z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="footer-note">With love, from Yahya's family ♡</p>
+    </footer>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
