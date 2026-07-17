@@ -20,6 +20,7 @@
       invitation.hidden = false;
       spawnSparkles();
       observeReveals();
+      initParallax();
       overlay.classList.add("fade-out");
       setTimeout(function () { overlay.remove(); }, 900);
     }, delay);
@@ -48,6 +49,26 @@
         field.appendChild(s);
       }
     });
+  }
+
+  // ─── Subtle parallax on hero art ────────────────────────────────────
+  function initParallax() {
+    if (reducedMotion) return;
+    var items = [].slice.call(document.querySelectorAll(".parallax"));
+    if (!items.length) return;
+    var ticking = false;
+    function update() {
+      var y = window.pageYOffset || document.documentElement.scrollTop;
+      items.forEach(function (el) {
+        var depth = parseFloat(el.dataset.depth || "0.1");
+        el.style.setProperty("--px", (-y * depth).toFixed(1) + "px");
+      });
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
   }
 
   // ─── Scroll reveals ─────────────────────────────────────────────────

@@ -58,50 +58,20 @@
     <!-- Hero -->
     <section class="hero reveal">
       <div class="sparkle-field" data-sparkles="18"></div>
-      <div class="crown-main floaty" aria-hidden="true">
-        <svg viewBox="0 0 200 130">
-          <path class="crown-gold" d="M18 108 L10 48 Q34 66 48 52 Q40 32 52 24 Q66 20 70 36 Q76 54 100 30 Q124 54 130 36 Q134 20 148 24 Q160 32 152 52 Q166 66 190 48 L182 108 Z"/>
-          <rect class="crown-band" x="14" y="104" width="172" height="16" rx="7"/>
-          <circle class="crown-pearl" cx="34" cy="112" r="3.4"/><circle class="crown-pearl" cx="56" cy="112" r="3.4"/><circle class="crown-pearl" cx="78" cy="112" r="3.4"/><circle class="crown-pearl" cx="100" cy="112" r="3.4"/><circle class="crown-pearl" cx="122" cy="112" r="3.4"/><circle class="crown-pearl" cx="144" cy="112" r="3.4"/><circle class="crown-pearl" cx="166" cy="112" r="3.4"/>
-          <path class="crown-jewel" d="M100 58 L112 76 L100 94 L88 76 Z"/>
-          <circle class="crown-jewel-side" cx="52" cy="78" r="7"/>
-          <circle class="crown-jewel-side" cx="148" cy="78" r="7"/>
-          <circle class="crown-gold" cx="100" cy="22" r="6"/>
-        </svg>
-      </div>
-      <h1 class="script-heading">
-        <span class="line-blue">A</span>
-        <span class="line-blue big">Royal</span>
-        <span class="line-gold big">Celebration</span>
-        <span class="line-blue big">Awaits</span>
+      <h1 class="hero-title">
+        <img src="assets/art/title.png" alt="A Royal Celebration Awaits" class="title-art floaty parallax" data-depth="0.12">
       </h1>
+      <img src="assets/art/hero_chars.png" alt="The little prince with his dragon and royal cake" class="hero-chars">
       <p class="countdown" id="countdown" aria-live="polite"></p>
       <div class="scroll-cue" aria-hidden="true">▾</div>
     </section>
 
     <!-- Details -->
     <section class="details reveal">
-      <div class="balloons balloons-left" aria-hidden="true">
-        <svg viewBox="0 0 100 190">
-          <path class="string" d="M38 76 Q30 110 44 140 Q52 162 40 186" />
-          <path class="string" d="M66 66 Q76 100 62 132" />
-          <ellipse class="b-navy"  cx="36" cy="48" rx="26" ry="31"/>
-          <ellipse class="b-gold"  cx="72" cy="36" rx="21" ry="26"/>
-          <ellipse class="b-sky"   cx="58" cy="86" rx="17" ry="21"/>
-          <text x="28" y="54" class="balloon-crown">👑</text>
-        </svg>
-      </div>
-      <div class="balloons balloons-right" aria-hidden="true">
-        <svg viewBox="0 0 100 190">
-          <path class="string" d="M62 76 Q70 110 56 140 Q48 162 60 186" />
-          <path class="string" d="M34 66 Q24 100 38 132" />
-          <ellipse class="b-gold"  cx="64" cy="48" rx="26" ry="31"/>
-          <ellipse class="b-sky"   cx="28" cy="36" rx="21" ry="26"/>
-          <ellipse class="b-navy"  cx="42" cy="86" rx="17" ry="21"/>
-          <text x="56" y="54" class="balloon-crown">👑</text>
-        </svg>
-      </div>
+      <img src="assets/art/balloons_l.png" alt="" class="balloons balloons-left floaty" aria-hidden="true">
+      <img src="assets/art/balloons_r.png" alt="" class="balloons balloons-right floaty" aria-hidden="true">
 
+      <img src="assets/art/cake.png" alt="" class="details-cake floaty" aria-hidden="true">
       <p class="eyebrow">The Royals are gathering<br>to celebrate</p>
       <h2 class="name-script">Yahya's</h2>
       <p class="first-birthday">1st Birthday!</p>
@@ -113,12 +83,12 @@
       </div>
       <p class="detail-line time-line">7 PM – 10 PM</p>
       <p class="detail-line venue-name">Tempura Grill</p>
-      <p class="detail-line">25901 Hillcroft St B6</p>
+      <p class="detail-line">5901 Hillcroft St B6</p>
       <p class="detail-line">Houston</p>
 
       <div class="btn-row">
         <button class="royal-btn" id="calendar-btn">📅 Add to Calendar</button>
-        <a class="royal-btn" id="maps-btn" href="https://maps.google.com/?q=Tempura+Grill,+25901+Hillcroft+St+B6,+Houston,+TX" target="_blank" rel="noopener">📍 Open in Maps</a>
+        <a class="royal-btn" id="maps-btn" href="https://maps.google.com/?q=Tempura+Grill,+5901+Hillcroft+St+B6,+Houston,+TX" target="_blank" rel="noopener">📍 Open in Maps</a>
       </div>
     </section>
 
@@ -151,23 +121,23 @@
     <section class="video-section reveal" id="video-section">
       <h2 class="section-title script-gold">The Royal Invitation</h2>
       <div class="video-frame">
-        <video id="invite-video" controls playsinline preload="metadata">
+        <video id="invite-video" controls playsinline preload="metadata" poster="assets/art/video-poster.jpg">
           <source src="assets/yahya-invite.mp4" type="video/mp4">
         </video>
       </div>
     </section>
 
     <!-- Dress code -->
-    <section class="card-section reveal">
+    <section class="card-section reveal has-scene">
       <div class="royal-card">
         <div class="sparkle-field" data-sparkles="8"></div>
         <h2 class="card-title">Royal Elegance</h2>
-        <p class="card-body">We invite you to dress in your finest formal attire for our royal celebration.</p>
+        <p class="card-body">Formal attire to match our little prince's celebration.</p>
       </div>
     </section>
 
     <!-- RSVP -->
-    <section class="card-section reveal" id="rsvp">
+    <section class="card-section reveal has-scene" id="rsvp">
       <div class="royal-card">
         <h2 class="card-title">RSVP</h2>
         <p class="card-body">Please let us know if you can join the royal fun<br><strong>RSVP by August 1st</strong></p>
@@ -226,38 +196,7 @@
 
     <!-- Footer -->
     <footer class="footer reveal">
-      <div class="sparkle-field" data-sparkles="12"></div>
-      <div class="wood-sign">
-        <span class="chain chain-left" aria-hidden="true"></span>
-        <span class="chain chain-right" aria-hidden="true"></span>
-        <p class="sign-text">Hope to see<br>you there</p>
-      </div>
-      <div class="castle" aria-hidden="true">
-        <svg viewBox="0 0 360 140" preserveAspectRatio="xMidYMax meet">
-          <g class="castle-fill">
-            <rect x="30"  y="60" width="26" height="80"/>
-            <rect x="130" y="44" width="30" height="96"/>
-            <rect x="200" y="44" width="30" height="96"/>
-            <rect x="304" y="60" width="26" height="80"/>
-            <rect x="86"  y="76" width="188" height="64"/>
-            <rect x="52"  y="104" width="38" height="36"/>
-            <rect x="270" y="104" width="38" height="36"/>
-            <rect x="166" y="84" width="28" height="56" rx="14" class="castle-door"/>
-          </g>
-          <g class="castle-roof">
-            <path d="M28 62 L43 26 L58 62 Z"/>
-            <path d="M128 46 L145 8 L162 46 Z"/>
-            <path d="M198 46 L215 8 L232 46 Z"/>
-            <path d="M302 62 L317 26 L332 62 Z"/>
-          </g>
-          <g class="castle-flag">
-            <path d="M43 26 L43 12 L58 16 L43 20 Z"/>
-            <path d="M145 8 L145 -6 L160 -2 L145 2 Z"/>
-            <path d="M215 8 L215 -6 L230 -2 L215 2 Z"/>
-            <path d="M317 26 L317 12 L332 16 L317 20 Z"/>
-          </g>
-        </svg>
-      </div>
+      <img src="assets/art/footer_scene.jpg" alt="Hope to see you there — the little lion prince before the castle" class="footer-scene">
       <p class="footer-note">With love, from Yahya's family ♡</p>
     </footer>
   </main>
