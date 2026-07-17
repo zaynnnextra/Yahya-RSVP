@@ -13,7 +13,7 @@
  */
 
 var NOTIFY_EMAIL = "zaynnnextra@gmail.com";
-var SITE_URL     = "https://yahyasroyalbirthday.com/";
+var SITE_URL     = "https://yahyasbirthday.online/";
 var SHEET_NAME   = "RSVPs";
 var HEADERS      = ["Timestamp", "Name", "Email", "Attending", "Adults", "Kids", "Message", "Approved"];
 

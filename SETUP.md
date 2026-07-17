@@ -5,7 +5,7 @@ This guide covers the remaining pieces:
 
 1. [Update the RSVP backend](#step-1--update-the-rsvp-backend) — enables guest confirmation emails, the formatted dashboard, and the wishes wall (**~3 min, required after this update**)
 2. [The guest wishes wall](#step-2--the-guest-wishes-wall) — how to approve messages
-3. [Connect your custom domain](#step-3--connect-yahyasroyalbirthdaycom) — yahyasroyalbirthday.com
+3. [Connect your custom domain](#step-3--connect-yahyasbirthdayonline) — yahyasbirthday.online
 4. [Sharing tips](#sharing-tips)
 
 ---
@@ -49,13 +49,13 @@ If no wishes are approved, the Wishes section simply stays hidden.
 
 ---
 
-## Step 3 — Connect yahyasroyalbirthday.com
+## Step 3 — Connect yahyasbirthday.online
 
-This makes your link **https://yahyasroyalbirthday.com** instead of the github.io address.
+This makes your link **https://yahyasbirthday.online** instead of the github.io address.
 
 **A. Buy the domain (~$10/yr)**
 - Go to [Cloudflare Registrar](https://www.cloudflare.com/products/registrar/) or
-  [Namecheap](https://www.namecheap.com/) and buy **yahyasroyalbirthday.com**
+  [Namecheap](https://www.namecheap.com/) and buy **yahyasbirthday.online**
   (I checked the name for you; confirm it's available at checkout).
 
 **B. Point DNS at GitHub Pages** — in your domain's DNS settings, add:
@@ -63,12 +63,12 @@ This makes your link **https://yahyasroyalbirthday.com** instead of the github.i
 - One `CNAME` record for `www` → `zaynnnextra.github.io`
 
 **C. Tell GitHub about the domain**
-- Repo → **Settings → Pages → Custom domain** → enter `yahyasroyalbirthday.com` → **Save**.
+- Repo → **Settings → Pages → Custom domain** → enter `yahyasbirthday.online` → **Save**.
 - GitHub adds a `CNAME` file automatically and, once DNS propagates (minutes to a few
   hours), tick **Enforce HTTPS**.
 
 **D. Update the site's URLs to the domain** (so share buttons, previews & the confirmation
-email use the pretty link). Change these to `https://yahyasroyalbirthday.com/`:
+email use the pretty link). Change these to `https://yahyasbirthday.online/`:
 - `index.html` — the 3 URLs marked with the comment near the top (`og:url`, `og:image`, canonical)
 - `js/config.js` — `SITE_URL` and the `description`
 - `apps-script/Code.gs` — `SITE_URL` (then re-deploy a new version as in Step 1)
