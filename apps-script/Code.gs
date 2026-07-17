@@ -183,7 +183,7 @@ function guestHtml(name, accepting) {
           '</table>' +
           '<p style="margin-top:26px;font-size:15px;color:#6b6a63;">With love,<br>The Royal Family &#9825;</p>' +
         '</td></tr></table>' +
-        '<p style="margin:14px 0 0;font-size:11px;letter-spacing:1px;color:#9a988f;">Invitation designed by Zain Ali &middot; @zaynnnali</p>' +
+        '<p style="margin:14px 0 0;font-size:11px;letter-spacing:1px;color:#9a988f;">Invitation designed by Zain Ali &middot; <a href="https://instagram.com/zaynnnali" style="color:#9a988f;text-decoration:underline;">@zaynnnali</a></p>' +
     '</td></tr>' +
   '</table></body></html>';
 }
