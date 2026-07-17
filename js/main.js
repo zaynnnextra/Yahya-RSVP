@@ -9,33 +9,38 @@
   var envelope = document.getElementById("envelope");
   var seal = document.getElementById("seal");
   var invitation = document.getElementById("invitation");
+  var nav = document.getElementById("site-nav");
   var opened = false;
 
   function openEnvelope() {
     if (opened) return;
     opened = true;
     envelope.classList.add("open");
-    var delay = reducedMotion ? 150 : 1150;
+    var delay = reducedMotion ? 150 : 1650;
     setTimeout(function () {
       invitation.hidden = false;
+      nav.hidden = false;
       spawnSparkles();
       observeReveals();
       initParallax();
+      initScrollSpy();
+      loadWishes();
+      requestAnimationFrame(function () { nav.classList.add("show"); });
       overlay.classList.add("fade-out");
-      setTimeout(function () { overlay.remove(); }, 900);
+      setTimeout(function () { if (overlay) overlay.remove(); }, 900);
     }, delay);
   }
 
   seal.addEventListener("click", openEnvelope);
   overlay.addEventListener("click", openEnvelope);
-  // Auto-open so nobody gets stuck on the envelope.
-  setTimeout(openEnvelope, reducedMotion ? 1500 : 9000);
+  setTimeout(openEnvelope, reducedMotion ? 1500 : 11000);
 
   // ─── Sparkles ───────────────────────────────────────────────────────
   var SPARKLE_CHARS = ["✦", "✧", "✶", "·"];
-
   function spawnSparkles() {
     document.querySelectorAll(".sparkle-field").forEach(function (field) {
+      if (field.dataset.done) return;
+      field.dataset.done = "1";
       var count = parseInt(field.dataset.sparkles || "10", 10);
       for (var i = 0; i < count; i++) {
         var s = document.createElement("span");
@@ -51,7 +56,7 @@
     });
   }
 
-  // ─── Subtle parallax on hero art ────────────────────────────────────
+  // ─── Parallax ───────────────────────────────────────────────────────
   function initParallax() {
     if (reducedMotion) return;
     var items = [].slice.call(document.querySelectorAll(".parallax"));
@@ -65,28 +70,36 @@
       });
       ticking = false;
     }
-    window.addEventListener("scroll", function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     update();
   }
 
   // ─── Scroll reveals ─────────────────────────────────────────────────
   function observeReveals() {
     var reveals = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      reveals.forEach(function (el) { el.classList.add("revealed"); });
-      return;
-    }
+    if (!("IntersectionObserver" in window)) { reveals.forEach(function (el) { el.classList.add("revealed"); }); return; }
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          io.unobserve(entry.target);
-        }
-      });
+      entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add("revealed"); io.unobserve(entry.target); } });
     }, { threshold: 0.12 });
     reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  // ─── Nav scrollspy ──────────────────────────────────────────────────
+  function initScrollSpy() {
+    var links = [].slice.call(document.querySelectorAll(".nav-links a"));
+    var map = {};
+    links.forEach(function (a) { var id = a.getAttribute("href").slice(1); var el = document.getElementById(id); if (el) map[id] = a; });
+    var ids = Object.keys(map);
+    if (!ids.length || !("IntersectionObserver" in window)) return;
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove("active"); });
+          if (map[e.target.id]) map[e.target.id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    ids.forEach(function (id) { spy.observe(document.getElementById(id)); });
   }
 
   // ─── Countdown ──────────────────────────────────────────────────────
@@ -100,51 +113,69 @@
     else countdownEl.remove();
   }
 
-  // ─── Add to Calendar (.ics download) ────────────────────────────────
+  // ─── Add to Calendar (.ics) ─────────────────────────────────────────
   var calendarBtn = document.getElementById("calendar-btn");
   if (calendarBtn && CONFIG.EVENT) {
     calendarBtn.addEventListener("click", function () {
       var ev = CONFIG.EVENT;
       var ics = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//Yahya RSVP//EN",
-        "BEGIN:VEVENT",
+        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Yahya RSVP//EN", "BEGIN:VEVENT",
         "UID:yahya-1st-birthday@yahya-rsvp",
         "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z"),
-        "DTSTART:" + ev.start,
-        "DTEND:" + ev.end,
-        "SUMMARY:" + ev.title,
-        "LOCATION:" + ev.location.replace(/,/g, "\\,"),
-        "DESCRIPTION:" + ev.description.replace(/,/g, "\\,"),
-        "END:VEVENT",
-        "END:VCALENDAR",
+        "DTSTART:" + ev.start, "DTEND:" + ev.end, "SUMMARY:" + ev.title,
+        "LOCATION:" + ev.location.replace(/,/g, "\\,"), "DESCRIPTION:" + ev.description.replace(/,/g, "\\,"),
+        "END:VEVENT", "END:VCALENDAR",
       ].join("\r\n");
       var blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
       var a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "yahyas-1st-birthday.ics";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      a.href = URL.createObjectURL(blob); a.download = "yahyas-1st-birthday.ics";
+      document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
     });
   }
 
-  // ─── Video: hide the section until the MP4 file exists ─────────────
+  // ─── Share ──────────────────────────────────────────────────────────
+  function shareInvite() {
+    var url = (CONFIG.SITE_URL) || location.href;
+    var data = { title: "Yahya's 1st Birthday 👑", text: "You're invited to Yahya's Royal 1st Birthday! Tap to open your invitation & RSVP:", url: url };
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    var wa = "https://wa.me/?text=" + encodeURIComponent(data.text + " " + url);
+    if (navigator.clipboard) { navigator.clipboard.writeText(url).catch(function () {}); }
+    window.open(wa, "_blank", "noopener");
+  }
+  ["nav-share", "closing-share", "done-share"].forEach(function (id) {
+    var b = document.getElementById(id); if (b) b.addEventListener("click", shareInvite);
+  });
+
+  // ─── Video: hide if the MP4 can't load ──────────────────────────────
   var video = document.getElementById("invite-video");
   var videoSection = document.getElementById("video-section");
   if (video && videoSection) {
-    var hideIfBroken = function () {
-      // NETWORK_NO_SOURCE (3) also covers a 404 that happened before this
-      // script attached its listeners.
-      if (video.error || video.networkState === 3) videoSection.hidden = true;
-    };
+    var hideIfBroken = function () { if (video.error || video.networkState === 3) videoSection.hidden = true; };
     video.addEventListener("error", hideIfBroken, true);
     var source = video.querySelector("source");
     if (source) source.addEventListener("error", hideIfBroken);
     hideIfBroken();
     window.addEventListener("load", function () { setTimeout(hideIfBroken, 400); });
+  }
+
+  // ─── Wishes wall ────────────────────────────────────────────────────
+  function escapeHtml(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function loadWishes() {
+    var section = document.getElementById("wishes");
+    var list = document.getElementById("wishes-list");
+    if (!section || !list || !CONFIG.RSVP_ENDPOINT) return;
+    var url = CONFIG.RSVP_ENDPOINT + (CONFIG.RSVP_ENDPOINT.indexOf("?") === -1 ? "?" : "&") + "wishes=1";
+    fetch(url).then(function (r) { return r.json(); }).then(function (data) {
+      var wishes = (data && data.wishes) || [];
+      if (!wishes.length) return;
+      list.innerHTML = wishes.map(function (w) {
+        return '<div class="wish-card"><p class="wish-msg">' + escapeHtml(w.message || "") +
+               '</p><p class="wish-name">' + escapeHtml(w.name || "A royal guest") + '</p></div>';
+      }).join("");
+      section.hidden = false;
+      section.classList.add("revealed");
+    }).catch(function () {});
   }
 
   // ─── RSVP form ──────────────────────────────────────────────────────
@@ -155,7 +186,6 @@
   var doneBody = document.getElementById("done-body");
   var countsRow = document.getElementById("counts-row");
 
-  // Steppers
   document.querySelectorAll(".step-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var input = document.getElementById("rsvp-" + btn.dataset.target);
@@ -164,34 +194,28 @@
     });
   });
 
-  // Hide the headcount when declining
   document.querySelectorAll('input[name="attending"]').forEach(function (radio) {
     radio.addEventListener("change", function () {
       countsRow.classList.toggle("hidden-soft", radio.value.indexOf("Declines") !== -1 && radio.checked);
     });
   });
 
-  function setStatus(msg, ok) {
-    statusEl.textContent = msg;
-    statusEl.classList.toggle("ok", !!ok);
-  }
+  function setStatus(msg, ok) { statusEl.textContent = msg; statusEl.classList.toggle("ok", !!ok); }
 
-  form.addEventListener("submit", function (e) {
+  if (form) form.addEventListener("submit", function (e) {
     e.preventDefault();
-
     var name = document.getElementById("rsvp-name").value.trim();
+    var email = document.getElementById("rsvp-email").value.trim();
     var attending = form.querySelector('input[name="attending"]:checked');
     if (!name) return setStatus("Please tell us your name ✍️");
     if (!attending) return setStatus("Please choose whether you can attend 👑");
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setStatus("That email looks off — mind checking it?");
 
-    if (!CONFIG.RSVP_ENDPOINT) {
-      return setStatus("RSVPs open soon — please check back or message us directly!");
-    }
+    if (!CONFIG.RSVP_ENDPOINT) return setStatus("RSVPs open soon — please check back or message us directly!");
 
     var declining = attending.value.indexOf("Declines") !== -1;
     var payload = new URLSearchParams({
-      name: name,
-      attending: attending.value,
+      name: name, email: email, attending: attending.value,
       adults: declining ? "0" : document.getElementById("rsvp-adults").value,
       kids: declining ? "0" : document.getElementById("rsvp-kids").value,
       message: document.getElementById("rsvp-message").value.trim(),
@@ -207,12 +231,9 @@
         form.hidden = true;
         doneBody.textContent = declining
           ? "We're sorry you'll miss it, " + name + " — thank you for letting us know! 💙"
-          : "We can't wait to celebrate with you, " + name + "! 🎉";
+          : "We can't wait to celebrate with you, " + name + "!" + (email ? " A confirmation is on its way to your inbox. 🎉" : " 🎉");
         doneEl.hidden = false;
       })
-      .catch(function () {
-        submitBtn.disabled = false;
-        setStatus("Something went wrong — please try again in a moment.");
-      });
+      .catch(function () { submitBtn.disabled = false; setStatus("Something went wrong — please try again in a moment."); });
   });
 })();

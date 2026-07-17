@@ -5,6 +5,10 @@
 window.YAHYA_CONFIG = {
   RSVP_ENDPOINT: "https://script.google.com/macros/s/AKfycbyIi7YqeAuKYy0i5nAkUJYjlfm1GPPSPdmJDF5xupv0YERIDBD37IbWhcW6h6GROY9j6Q/exec",
 
+  // Public site URL (used by the Share button). Change to your custom domain
+  // (https://yahyasroyalbirthday.com/) once it's connected — see SETUP.md.
+  SITE_URL: "https://zaynnnextra.github.io/Yahya-RSVP/",
+
   // Event details used for the Add to Calendar button.
   EVENT: {
     title: "Yahya's 1st Birthday 👑 A Royal Celebration",
