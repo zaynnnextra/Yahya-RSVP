@@ -150,29 +150,42 @@ function guestHtml(name, accepting) {
   var lead = accepting
     ? "By royal decree, your presence is joyfully confirmed. We can't wait to celebrate with you!"
     : "Thank you for letting us know. You'll be dearly missed at the celebration.";
+  // Table-based + explicit bgcolor + color-scheme meta so email dark modes
+  // don't invert the navy/cream palette into murky purple/brown.
   return '' +
-  '<div style="margin:0;padding:24px;background:#ece7db;font-family:Georgia,serif;color:#34342f">' +
-    '<div style="max-width:520px;margin:0 auto;background:#fffdf8;border:2px solid #e8c96a;border-radius:18px;overflow:hidden">' +
-      '<div style="background:#1e3a8a;padding:26px 20px;text-align:center">' +
-        '<div style="font-size:40px">👑</div>' +
-        '<div style="color:#f3e3b3;font-size:22px;letter-spacing:3px;text-transform:uppercase;margin-top:6px">Royal Decree</div>' +
-      '</div>' +
-      '<div style="padding:28px 26px;text-align:center">' +
-        '<p style="font-size:20px;margin:0 0 4px">Dear <strong>' + escapeHtml(name) + '</strong>,</p>' +
-        '<p style="font-size:17px;line-height:1.6;color:#4a4a44">' + lead + '</p>' +
-        '<div style="height:1px;background:#e8c96a;margin:22px 0"></div>' +
-        '<p style="font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#a07f1f;margin:0">Yahya\'s 1st Birthday</p>' +
-        '<p style="font-size:18px;margin:8px 0 2px"><strong>Saturday, August 29 · 7–10 PM</strong></p>' +
-        '<p style="font-size:16px;margin:0;color:#4a4a44">Tempura Grill · 5901 Hillcroft St B6 · Houston</p>' +
-        '<p style="font-size:14px;margin:10px 0 0;color:#6b6a63">Dress code: Royal Elegance (formal attire)</p>' +
-        '<div style="margin-top:24px">' +
-          '<a href="' + gcal + '" style="display:inline-block;background:#1e3a8a;color:#fffdf6;text-decoration:none;padding:12px 22px;border-radius:999px;border:1px solid #e8c96a;font-size:15px;margin:4px">📅 Add to Calendar</a>' +
-          '<a href="' + SITE_URL + '" style="display:inline-block;background:#fffdf8;color:#1e3a8a;text-decoration:none;padding:12px 22px;border-radius:999px;border:1px solid #1e3a8a;font-size:15px;margin:4px">View Invitation</a>' +
-        '</div>' +
-        '<p style="margin-top:26px;font-size:15px;color:#6b6a63">With love,<br>The Royal Family ♡</p>' +
-      '</div>' +
-    '</div>' +
-  '</div>';
+  '<!DOCTYPE html><html><head><meta charset="utf-8">' +
+  '<meta name="color-scheme" content="light">' +
+  '<meta name="supported-color-schemes" content="light">' +
+  '<style>:root{color-scheme:light only;supported-color-schemes:light only;}</style></head>' +
+  '<body style="margin:0;padding:0;background-color:#ece7db;">' +
+  '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ece7db" style="background-color:#ece7db;">' +
+    '<tr><td align="center" style="padding:24px 12px;">' +
+      '<table role="presentation" width="520" cellpadding="0" cellspacing="0" bgcolor="#fffdf8" style="width:100%;max-width:520px;background-color:#fffdf8;border:2px solid #e8c96a;border-radius:16px;overflow:hidden;font-family:Georgia,\'Times New Roman\',serif;">' +
+        '<tr><td align="center" bgcolor="#1e3a8a" style="background-color:#1e3a8a;padding:26px 20px;">' +
+          '<div style="font-size:40px;line-height:1;">&#128081;</div>' +
+          '<div style="color:#f3e3b3;font-size:22px;letter-spacing:3px;text-transform:uppercase;margin-top:8px;">Royal Decree</div>' +
+        '</td></tr>' +
+        '<tr><td align="center" bgcolor="#fffdf8" style="background-color:#fffdf8;padding:28px 26px;color:#34342f;">' +
+          '<p style="font-size:20px;margin:0 0 6px;color:#34342f;">Dear <strong>' + escapeHtml(name) + '</strong>,</p>' +
+          '<p style="font-size:17px;line-height:1.6;margin:0;color:#454540;">' + lead + '</p>' +
+          '<div style="height:1px;line-height:1px;font-size:0;background-color:#e8c96a;margin:22px auto;width:78%;">&nbsp;</div>' +
+          '<p style="font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#a07f1f;margin:0;">Yahya\'s 1st Birthday</p>' +
+          '<p style="font-size:18px;margin:8px 0 2px;color:#34342f;"><strong>Saturday, August 29 &middot; 7&ndash;10 PM</strong></p>' +
+          '<p style="font-size:16px;margin:0;color:#454540;">Tempura Grill &middot; 5901 Hillcroft St B6 &middot; Houston</p>' +
+          '<p style="font-size:14px;margin:10px 0 0;color:#6b6a63;">Dress code: Royal Elegance (formal attire)</p>' +
+          '<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:22px auto 0;">' +
+            '<tr><td align="center" bgcolor="#1e3a8a" style="background-color:#1e3a8a;border-radius:999px;">' +
+              '<a href="' + gcal + '" style="display:inline-block;color:#fffdf6;text-decoration:none;padding:12px 24px;font-size:15px;border:1px solid #e8c96a;border-radius:999px;">&#128197; Add to Calendar</a>' +
+            '</td></tr><tr><td height="10" style="line-height:10px;font-size:0;">&nbsp;</td></tr>' +
+            '<tr><td align="center" bgcolor="#fffdf8" style="background-color:#fffdf8;border-radius:999px;">' +
+              '<a href="' + SITE_URL + '" style="display:inline-block;color:#1e3a8a;text-decoration:none;padding:12px 24px;font-size:15px;border:1px solid #1e3a8a;border-radius:999px;">View Invitation</a>' +
+            '</td></tr>' +
+          '</table>' +
+          '<p style="margin-top:26px;font-size:15px;color:#6b6a63;">With love,<br>The Royal Family &#9825;</p>' +
+        '</td></tr>' +
+      '</table>' +
+    '</td></tr>' +
+  '</table></body></html>';
 }
 
 /* ─────────── utils ─────────── */
