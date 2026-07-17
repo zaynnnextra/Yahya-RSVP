@@ -13,7 +13,7 @@
  */
 
 var NOTIFY_EMAIL = "zaynnnextra@gmail.com";
-var SITE_URL     = "https://zaynnnextra.github.io/Yahya-RSVP/";  // change to your domain once connected
+var SITE_URL     = "https://yahyasroyalbirthday.com/";
 var SHEET_NAME   = "RSVPs";
 var HEADERS      = ["Timestamp", "Name", "Email", "Attending", "Adults", "Kids", "Message", "Approved"];
 
